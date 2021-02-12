@@ -44,6 +44,10 @@ const Card = (article) => {
 	headlineDiv.textContent = headline;
 	authorNameSpan.textContent = `By ${authorName}`;
 
+	cardDiv.addEventListener('click', (event) => {
+		console.log(event.target.outerText);
+	});
+
 	return cardDiv;
 };
 
