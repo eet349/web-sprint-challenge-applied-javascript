@@ -11,18 +11,19 @@ const Header = (title, date, temp) => {
 	//    <span class="temp">{ temp }</span>
 	//  </div>
 	//
+	// Create the elements we need for the Header component
 	const headerDiv = document.createElement('div');
 	const dateSpan = document.createElement('span');
 	const titleH1 = document.createElement('h1');
 	const tempSpan = document.createElement('span');
-
+	// Set up the structure of the Header component according to the template
 	headerDiv.appendChild(dateSpan);
 	headerDiv.appendChild(titleH1);
 	headerDiv.appendChild(tempSpan);
-
+	// Add any classes based off the template
 	dateSpan.classList.add('date');
 	tempSpan.classList.add('temp');
-
+	// Set the content of the elements as per the template
 	dateSpan.textContent = date;
 	titleH1.textContent = title;
 	tempSpan.textContent = temp;
@@ -37,15 +38,16 @@ const headerAppender = (selector) => {
 	// It should create a header using the Header component above, passing arguments of your choosing.
 	// It should append the header to the element in the DOM that matches the given selector.
 	//
-	document
-		.querySelector(selector)
-		.appendChild(
-			Header(
-				'Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur.',
-				'Feb 12, 2021',
-				'36°'
-			)
-		);
+	// Grabs the anchor-point for attaching the Header component
+	const headerAnchor = document.querySelector(selector);
+	// Creates and appends a header component
+	headerAnchor.appendChild(
+		Header(
+			'Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur.',
+			'Feb 12, 2021',
+			'36°'
+		)
+	);
 };
 
 export { Header, headerAppender };

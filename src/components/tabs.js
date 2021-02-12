@@ -15,13 +15,17 @@ const Tabs = (topics) => {
 	//   <div class="tab">technology</div>
 	// </div>
 	//
+	// Creates an element that will be the container for the tab divs as per the template
 	const topicsDiv = document.createElement('div');
+	// Sets the appropriate classes
 	topicsDiv.classList.add('topics');
+
 	topics.forEach((topic) => {
-		let tabDiv = document.createElement('div');
-		tabDiv.classList.add('tab');
-		topicsDiv.appendChild(tabDiv);
-		tabDiv.textContent = topic;
+		// Loops over the topics array
+		let tabDiv = document.createElement('div'); // Creating new div elements
+		tabDiv.classList.add('tab'); // Assigning appropriate classes for styling
+		topicsDiv.appendChild(tabDiv); // Appends that div to the above tabs container div
+		tabDiv.textContent = topic; // Inserts the content of the tab div
 	});
 
 	return topicsDiv;
@@ -35,13 +39,13 @@ const tabsAppender = (selector) => {
 	// Find the array of topics inside the response, and create the tabs using the Tabs component.
 	// Append the tabs to the element in the DOM that matches the selector passed to the function.
 	//
-	const anchorPoint = document.querySelector(selector);
-
+	// Creates an anchor-point for the tabs components
+	const tabAnchor = document.querySelector(selector);
+	// Axios get request to the topics endpoint
 	axios
 		.get('https://lambda-times-api.herokuapp.com/topics')
 		.then((res) => {
-			// console.log('Tabs: ', res.data.topics);
-			anchorPoint.appendChild(Tabs(res.data.topics));
+			tabAnchor.appendChild(Tabs(res.data.topics)); // Appends a Tabs component to its anchor-point
 		})
 		.catch((err) => {
 			console.log(err);
